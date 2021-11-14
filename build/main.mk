@@ -18,8 +18,12 @@
 # Signing
 -include vendor/proton/signing/keys.mk
 
-# Override fingerprint for Google Play Services and SafetyNet
+# Override fingerprint and security patch for Google Play Services and SafetyNet
 ifneq ($(PRODUCT_OVERRIDE_FINGERPRINT),)
 ADDITIONAL_SYSTEM_PROPERTIES += \
     ro.build.stock_fingerprint=$(PRODUCT_OVERRIDE_FINGERPRINT)
+endif
+ifneq ($(PRODUCT_OVERRIDE_SECURITY_PATCH),)
+ADDITIONAL_SYSTEM_PROPERTIES += \
+    ro.build.version.stock_security_patch=$(PRODUCT_OVERRIDE_SECURITY_PATCH)
 endif
